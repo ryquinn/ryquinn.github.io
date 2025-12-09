@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ryan Quinn</title>
+    <meta name="description" content="Academic webpage for Ryan Quinn.">
+    <link rel="icon" href="assets/img/chilli_icon.jpeg" type="image/jpeg">
+
+
+<script>
+window.MathJax = {
+  loader: { load: ['[tex]/html'] },           // load the 'html' extension
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    packages: { '[+]': ['html'] },            // enable it for TeX input
+    macros: {
+      myuline: ['\\class{myuline}{#1}', 1]    //\myuline{...} → span.myuline
+    }
+  }
+};
+</script>
+
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+    .myuline {
+    text-decoration: underline;
+    text-decoration-thickness: 0.09em;  /* thickness of line */
+    text-underline-offset: 0.12em;      /* distance below text */
+}
+
+    body {
+        font-family: "Computer Modern Serif", Georgia, serif;
+        max-width: 800px;
+        margin: 40px auto;
+        line-height: 1.6;
+        padding: 0 15px;
+    }
+    
+        /* --- Paragraph formatting --- */
+    p {
+        text-align: justify;    /* justify text */
+        hyphens: auto;          /* better justification */
+        margin-bottom: 1em;
+    }
+
+    h1, h2 {
+        font-family: "Computer Modern Serif", serif;
+        margin-bottom: 0.2em;
+    }
+    nav a {
+        margin-right: 15px;
+    }
+
+    /* Hyperlink color */
+    a {
+        color: rgb(33, 100, 60);  /* Your requested color */
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    img.profile {
+        width: 300px;
+        float: right;
+        margin-left: 20px;
+        border-radius: 4px;
+    }
+    footer {
+        margin-top: 40px;
+        font-size: 0.9em;
+        color: gray;
+    }
+/* Remove bullets ONLY for publication list */
+.pub-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Optional: Remove bullet spacing on list items */
+.pub-list li {
+    margin-left: 0;
+}
+
+/* Triangle arrow styling for the summary */
+.pub-list summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.pub-list summary::-webkit-details-marker {
+    display: none;
+}
+.pub-list {
+    list-style: none;     /* remove bullet */
+    padding-left: 20px;   /* restore normal UL indentation */
+}
+
+
+.pub-list summary::before {
+    content: "▶";
+    font-size: 0.2em;
+    margin-right: 6px;
+    color: rgb(33, 100, 60);
+}
+
+.pub-list details[open] summary::before {
+    content: "▼";
+    color: rgb(33, 100, 60);
+}
+
+.myuline{
+    text-decoration: underline;
+    text-decoration-thickness: 0.07em;  /* thickness of line */
+    text-underline-offset: 0.1em;      /* distance below text */
+}
+.baduline{
+    text-decoration: underline;
+    text-decoration-thickness: 0.07em;  /* thickness of line */
+    text-underline-offset: 0.32em;      /* distance below text */
+}
+
+
+</style>
+
+</head>
+
+<body>
+    <header>
+        <h1>Ryan Quinn</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+             <a href="#other">Notes</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#misc">Misc</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About me</h2>
+            <img src="assets/img/me4.jpeg" alt="Profile photo" class="profile">
+            <p>
+            I am a third year PhD student at Utrecht University supervised by <a href="https://webspace.science.uu.nl/~meier007/">Lennart Meier</a>.
+            Before this, I was a master student in maths at the University of Amsterdam, and an undergrad in maths and theoretical physics at Maynooth University.
+            <br>
+            <br>
+            I am funded by the National University of Ireland Travelling PhD Studentship.
+            </p>
+            <p>email: <a href="r.quinn@uu.nl">r.quinn@uu.nl</a></p>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <p>  
+            My main focus is in equivariant and chromatic homotopy theory; with a particular focus in structured ring spectra.
+            I'm particularly interested in mutliplicative structures on \(\mathrm{BP}^{(\!(G)\!)}\langle m\rangle\) and related computations.
+            </p>
+        </section>
+<section id="publications">
+    <h2>Publications & Preprints</h2>
+
+
+    <ul class="pub-list">
+        <li>
+            <details>
+                <summary>
+                    Multiplicative equivariant Thom spectra & structured Real orientations, joint with Qi Zhu, <em>in preperation, draft available</em> (2025).
+                </summary>
+                <p>Summary: 
+                    Let \(\rho\) be the regular representation of \(C_2\).
+                    We show that \(\mathrm{BP}_{\mathbb{R}}\) admits an \(\mathbb{E}_\rho\)-ring, and that \(\mathrm{BP}^{(\!(G)\!)}\) admits a \(\mathrm{coind}^G_{C_2}\mathbb{E}_\rho\)-ring structure.
+                    We do this by lifting Quillen's idempotent to an \(\mathbb{E}_\rho\)-ring map.
+                    More generally, we show that any homotopy commutative ring map \(\mathrm{MU}\to E^e\) lifts to an \(\mathbb{E}_\rho\)-ring map \(\mathrm{MU}_{\mathbb{R}}\to E\) for any strongly even \(C_2\)-\(\mathbb{E}_\infty\)-ring \(E\).
+                    We do this by developing an obstruction theory of structured orientations of equivariant Thom spectra.
+                    The essential technology that goes into this is: generalizing the work of Antolín-Camarena–Barthel to the parameterized setting; and constructing a good theory of parameterized left module categories.
+                </p>
+            </details>
+        </li>
+
+        <li>
+            <details>
+                <summary>
+                Spectral properties of light and charm mesons from \(N_f=2+1\) anisotropic lattice QCD, joint with Jonas Glesaaen, Alexander Rothkopf, and Jonivar Skullerud. <em>Proceedings of Science</em> (2019).  
+                    <a href="files/quarks.pdf">[PDF]</a> <a href="https://arxiv.org/abs/1903.11006">[arXiv]</a>
+                </summary>
+                <p>Summary: We compute temporal correlators and spectral functions for light, open charm and charmonium mesons in the pseudoscalar and vector channel for a range of temperatures below and above the deconfinement transition. The study is carried out using anisotropic lattice QCD with \(2+1\) dynamical flavours, \(a_s = 0.123\) fm and \(a_s/a_\tau = 3.5\). The high-temperature results are benchmarked by comparing them to reconstructed correlators obtained by direct summation of the zero temperature correlator. We use two Bayesian methods to reconstruct the spectral functions: the maximum entropy method and the more recent BR method.</p>
+            </details>
+        </li>
+    </ul>
+</section>
+
+<section id="other">
+    <h2>Notes</h2>
+    <ul class="pub-list">
+        <li>
+            <details>
+                <summary>
+                    Truncated Brown–Peterson spectra as generalized Thom spectra, (2025).
+                    <a href="files/BPn_Thom.pdf">[PDF]</a> 
+                </summary>
+                <p>Summary: We show that the truncated Brown–Peterson spectra \(\mathrm{BP}\langle n\rangle\) can be constructed as generalized Thom spectra.</p>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    A convenient approach to gradings in homotopy theories, (2025).
+                    <a href="files/gradings.pdf">[PDF]</a> 
+                </summary>
+                <p>Summary: We give a German approved way to talk about \(\mathrm{RO}(G)\)-graded homotopy groups.</p>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>
+                    Localization theorems in equivariant cohomology (2025).
+                    <a href="files/equivariant_localization_theorems.pdf">[PDF]</a> 
+                </summary>
+                <p>
+                    Summary:
+                    This note reviews Atiyah–Bott localization theorems in equivariant cohomology. The goal is to highlight the following three things:
+                    <ul>
+                        <li>First, that proofs of Atiyah–Bott style localization theorems can be made completely formal.</li>
+                        <li>Second, give easy to check conditions for when an Atiyah–Bott style localization theorem holds in the integer graded setting, and show that they always hold in the \(\mathrm{RO}(G)\)-graded setting.</li>
+                        <li>Finally, clarify the situation for non-abelian groups.</li>
+                    </ul>
+                </p>
+                <p>
+                    This is essentially a cleaned up version of my masters thesis, supervised by Lennart Meier.
+                </p>
+            </details>
+        </li>
+        </ul>
+</section>
+
+
+
+
+
+    <section id="teaching">
+            <h2>Teaching & Supervision</h2>
+            <ul>
+                <li>Topological quantum field theories mini-course</li>
+                <li>Morse theory reading project</li>
+            </ul>
+    </section>
+
+
+    
+
+
+    <section id="misc">
+    <h2>Misc</h2>
+
+    <ul class="pub-list">
+    <li>
+      <details class="latex-snippet">
+        <summary>
+          code for nicer underlines in $\LaTeX$, e.g. compare
+          <span class="baduline">Sp</span> versus <span class="myuline">Sp</span>,
+          or <span class="baduline">Alg</span> versus <span class="myuline">Alg</span>
+        </summary>
+
+        <div class="latex-snippet__header">
+          <div class="latex-snippet__title">copy  \(\LaTeX\)</div>
+          <button class="latex-snippet__copy" type="button">Copy</button>
+        </div>
+
+        <pre class="latex-snippet__pre"><code class="latex-snippet__code">%---(nicer underlines)-------------------------------------------------------------------START
+\makeatletter
+\usepackage[normalem]{ulem}
+\usepackage{contour}
+\usepackage{mathtools} % for \mathllap
+
+\renewcommand{\ULdepth}{1.8pt} % how low to make the underline
+\contourlength{0.8pt} % how big to make the gap in words like map
+
+\makeatletter
+% usage: there are two ways to use this 
+% \myuline{text} puts an underline under text
+% \myuline[7em]{text} puts an underline under text but shortens it by 7em; of course 7em can be changed. This is useful for stuff like \({\myuline[0.5pt]{\mathrm{Map}}}_G\), vs \({\myuline{\mathrm{Map}}}_G\)
+\DeclareRobustCommand{\myuline}[2][0pt]{%
+  \ifmmode
+    % draw a slightly shorter underline
+    \uline{\hphantom{#2}\kern-#1}%
+    % restore overall width so following text lines up
+    \kern#1%
+    % overlay the actual content, with proper math style
+    \mathllap{\mathpalette\my@cont@{#2}}%
+  \else
+    \uline{\phantom{#2}\kern-#1}%
+    \kern#1%
+    \llap{\contour{white}{#2}}%
+  \fi
+}
+% #1 = current math style, #2 = content
+\newcommand{\my@cont@}[2]{\contour{white}{\mbox{$\m@th#1#2$}}}
+\makeatother
+%------------------------------------------------------------------------------------------END</code></pre>
+      </details>
+    </li>
+  </ul>
+</section>
+
+<style>
+  /* Optional styling for the dropdown content */
+  details.latex-snippet {
+    border: 1px solid rgba(162, 61, 61, 0.12);
+    border-radius: 12px;
+    padding: 8px 10px;
+    background: #fff;
+    max-width: 900px;
+  }
+  details.latex-snippet > summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .latex-snippet__header {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 10px;
+  }
+  .latex-snippet__copy {
+    border: 1px solid rgba(0,0,0,.08);
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .latex-snippet__pre {
+    margin: 10px 0 0;
+    padding: 12px;
+    overflow: auto;
+    background: #fff;
+    color: rgb(33, 100, 60);
+    border-radius: 10px;
+  }
+  .latex-snippet__code {
+    white-space: pre;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+  }
+</style>
+
+<script>
+  // code snippet copy
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".latex-snippet__copy");
+    if (!btn) return;
+
+    const container = btn.closest(".latex-snippet");
+    const codeEl = container.querySelector(".latex-snippet__code");
+    const text = codeEl.textContent;
+
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+
+    const old = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => (btn.textContent = old), 1200);
+  });
+</script>
+
+
+<style>
+  /* no box around the whole <details> */
+  details.latex-snippet {
+    border: none;
+    background: transparent;
+    padding: 0;
+    max-width: none;
+  }
+  details.latex-snippet > summary {
+    font-weight: normal; 
+    cursor: pointer;
+  }
+  </style>
+
+
+
+
+
+    </main>
+
+
+    <footer>
+        © Ryan Quinn – Last updated: 2025  
+    </footer>
+</body>
+</html>
