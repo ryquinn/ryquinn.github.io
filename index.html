@@ -1,304 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ryan Quinn</title>
-    <meta name="description" content="Academic webpage for Ryan Quinn.">
-    <link rel="icon" href="chilli_icon.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ryan Quinn</title>
+  <meta name="description" content="Academic webpage for Ryan Quinn.">
+  <link rel="icon" href="chilli_icon.jpeg" type="image/jpeg">
 
+  <script>
+    window.MathJax = {
+      loader: { load: ['[tex]/html'] },
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        packages: { '[+]': ['html'] },
+        macros: {
+          myuline: ['\\class{myuline}{#1}', 1]
+        }
+      }
+    };
+  </script>
 
-<script>
-window.MathJax = {
-  loader: { load: ['[tex]/html'] },           // load the 'html' extension
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$','$$'], ['\\[','\\]']],
-    packages: { '[+]': ['html'] },            // enable it for TeX input
-    macros: {
-      myuline: ['\\class{myuline}{#1}', 1]    //\myuline{...} → span.myuline
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --green: rgb(33, 100, 60);
+      --text: #171717;
+      --muted: #666;
+      --rule: #d8d8d8;
+      --bg: #fbfaf7;
+      --card: #ffffff;
     }
-  }
-};
-</script>
 
-<script id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    * {
+      box-sizing: border-box;
+    }
 
-
-<style>
-    .myuline {
-    text-decoration: underline;
-    text-decoration-thickness: 0.09em;  /* thickness of line */
-    text-underline-offset: 0.12em;      /* distance below text */
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-        font-family: "Computer Modern Serif", Georgia, serif;
-        max-width: 800px;
-        margin: 40px auto;
-        line-height: 1.6;
-        padding: 0 15px;
+      font-family: "Computer Modern Serif", Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 920px;
+      margin: 48px auto;
+      line-height: 1.65;
+      padding: 0 24px;
+      font-size: 17px;
     }
-    
-        /* --- Paragraph formatting --- */
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      margin: 0 0 0.2em;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      margin-top: 1.8em;
+      margin-bottom: 0.55em;
+      letter-spacing: -0.01em;
+    }
+
     p {
-        text-align: justify;    /* justify text */
-        hyphens: auto;          /* better justification */
-        margin-bottom: 1em;
+      margin-top: 0;
+      margin-bottom: 1.05em;
+      text-align: justify;
+      hyphens: auto;
     }
 
-    h1, h2 {
-        font-family: "Computer Modern Serif", serif;
-        margin-bottom: 0.2em;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
     }
+
     nav a {
-        margin-right: 15px;
+      margin-right: 0;
+      font-size: 0.95rem;
     }
 
-    /* Hyperlink color */
     a {
-        color: rgb(33, 100, 60);  /* Your requested color */
-        text-decoration: none;
+      color: var(--green);
+      text-decoration: none;
     }
+
     a:hover {
-        text-decoration: underline;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    section {
+      margin-bottom: 1.7em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 30px;
+      align-items: start;
     }
 
     img.profile {
-        width: 300px;
-        float: right;
-        margin-left: 20px;
-        border-radius: 4px;
+      width: 100%;
+      max-width: 290px;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
     }
+
+    .email {
+      margin-top: 1.2em;
+      color: var(--muted);
+    }
+
+    .pub-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.6em;
+    }
+
+    .pub-list li {
+      margin: 0.45em 0;
+    }
+
+    .pub-list details {
+      padding: 0.15em 0;
+    }
+
+    .pub-list summary {
+      cursor: pointer;
+      list-style: none;
+      line-height: 1.45;
+    }
+
+    .pub-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .pub-list summary::before {
+      content: "▸";
+      display: inline-block;
+      width: 1.1em;
+      color: var(--green);
+      transform: translateY(-0.02em);
+    }
+
+    .pub-list details[open] summary::before {
+      content: "▾";
+    }
+
+    .pub-list details[open] {
+      background: rgba(33, 100, 60, 0.035);
+      border-left: 3px solid rgba(33, 100, 60, 0.35);
+      padding: 0.55em 0.8em;
+      margin: 0.35em 0 0.65em;
+    }
+
+    .pub-list details[open] summary {
+      margin-bottom: 0.45em;
+    }
+
+    .pub-list p {
+      margin-left: 1.1em;
+      font-size: 0.96rem;
+      color: #303030;
+    }
+
+    ul:not(.pub-list) {
+      padding-left: 1.35em;
+    }
+
     footer {
-        margin-top: 40px;
-        font-size: 0.9em;
-        color: gray;
+      margin-top: 52px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.9rem;
+      color: var(--muted);
     }
-/* Remove bullets ONLY for publication list */
-.pub-list {
-    list-style: none;
-    padding-left: 0;
-}
 
-/* Optional: Remove bullet spacing on list items */
-.pub-list li {
-    margin-left: 0;
-}
+    .myuline {
+      text-decoration: underline;
+      text-decoration-thickness: 0.07em;
+      text-underline-offset: 0.1em;
+    }
 
-/* Triangle arrow styling for the summary */
-.pub-list summary {
-    cursor: pointer;
-    list-style: none;
-}
+    .baduline {
+      text-decoration: underline;
+      text-decoration-thickness: 0.07em;
+      text-underline-offset: 0.32em;
+    }
 
-.pub-list summary::-webkit-details-marker {
-    display: none;
-}
-.pub-list {
-    list-style: none;     /* remove bullet */
-    padding-left: 20px;   /* restore normal UL indentation */
-}
+    details.latex-snippet {
+      border: none;
+      background: transparent;
+      padding: 0;
+      max-width: none;
+    }
 
+    details.latex-snippet > summary {
+      font-weight: normal;
+      cursor: pointer;
+    }
 
-.pub-list summary::before {
-    content: "▶";
-    /*font-size: 0.8em; */
-    margin-right: 6px;
-    color: rgb(33, 100, 60);
-}
+    .latex-snippet__header {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 10px;
+    }
 
-.pub-list details[open] summary::before {
-    content: "▼";
-    color: rgb(33, 100, 60);
-}
+    .latex-snippet__copy {
+      border: 1px solid rgba(0,0,0,.1);
+      background: var(--card);
+      padding: 6px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-.myuline{
-    text-decoration: underline;
-    text-decoration-thickness: 0.07em;  /* thickness of line */
-    text-underline-offset: 0.1em;      /* distance below text */
-}
-.baduline{
-    text-decoration: underline;
-    text-decoration-thickness: 0.07em;  /* thickness of line */
-    text-underline-offset: 0.32em;      /* distance below text */
-}
-@media (max-width: 600px) {
-  img.profile {
-    width: 160px;     /* pick the size you want */
-    float: none;      /* optional: avoids squishing text */
-    display: block;   /* optional */
-    margin: 0 auto 16px; /* optional: centers + spacing */
-  }
+    .latex-snippet__pre {
+      margin: 10px 0 0;
+      padding: 12px;
+      overflow: auto;
+      background: var(--card);
+      color: var(--green);
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
 
+    .latex-snippet__code {
+      white-space: pre;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+    }
 
-</style>
+    @media (max-width: 760px) {
+      body {
+        margin: 28px auto;
+        padding: 0 18px;
+        font-size: 16px;
+      }
 
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        text-align: left;
+        hyphens: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      img.profile {
+        max-width: 230px;
+        justify-self: center;
+        order: -1;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <h1>Ryan Quinn</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#research">Research</a>
-            <a href="#publications">Publications</a>
-             <a href="#other">Notes</a>
-            <a href="#teaching">Teaching</a>
-            <a href="#misc">Misc</a>
-        </nav>
-        <hr>
-    </header>
+  <header>
+    <h1>Ryan Quinn</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#other">Notes</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#misc">Misc</a>
+    </nav>
+  </header>
 
-    <main>
-        <section id="about">
-            <h2>About me</h2>
-            <img src="me4.jpeg" alt="Profile photo" class="profile">
-            <p>
-            I am currently a fourth year PhD student at Utrecht University supervised by <a href="https://webspace.science.uu.nl/~meier007/">Lennart Meier</a>, in spring I will start a Postdoc position at the Max Planck Institute for Mathematics in Bonn.
-                
-            Before this, I was a master's student in maths at the University of Amsterdam, and an undergrad in maths and theoretical physics at Maynooth University.
-            <br>
-            <br>
+  <main>
+    <section id="about">
+      <h2>About me</h2>
+
+      <div class="about-grid">
+        <div>
+          <p>
+            I am currently a fourth-year PhD student at Utrecht University, supervised by
+            <a href="https://webspace.science.uu.nl/~meier007/">Lennart Meier</a>.
+            In the spring, I will start a postdoc position at the Max Planck Institute for Mathematics in Bonn.
+          </p>
+
+          <p>
+            Before this, I was a master’s student in maths at the University of Amsterdam,
+            and an undergrad in maths and theoretical physics at Maynooth University.
+          </p>
+
+          <p>
             I am funded by the National University of Ireland Travelling PhD Studentship.
-            </p>
-            <p>email: <a href="r.quinn@uu.nl">r.quinn@uu.nl</a></p>
-        </section>
+          </p>
 
-        <section id="research">
-            <h2>Research</h2>
-            <p>  
-            My main focus is in equivariant and chromatic homotopy theory; with a particular focus in structured ring spectra.
-            I'm particularly interested in multiplicative structures on \(\mathrm{BP}^{(\!(G)\!)}\langle m\rangle\) and related computations.
-            I have a growing interest in applying equivariant multiplicative structures to the study of equivariant algebraic \(\mathrm{K}\)-theory, as well as to Grothendieck-Witt and \(\mathrm{L}\)-theory.
-            </p>
-        </section>
-<section id="publications">
-    <h2>Publications & Preprints</h2>
-
-
-    <ul class="pub-list">
-            <li>
-            <details>
-                <summary>
-                    Structured Real Snaith Equivalences, joint with Qi Zhu, <em>preprint</em> (2026).
-                    <a href="Snaith.pdf">[PDF]</a> <a href="https://arxiv.org/abs/2606.23309">[arXiv]</a>
-                </summary>
-                <p>Summary: 
-                    We prove Real equivariant multiplicative versions of Snaith Theorems. As an application, we compute \(\operatorname{THR}(\mathrm{MUP}_{\mathbb{R}})\) and \(\operatorname{THR}(\mathrm{KU}_{\mathbb{R}})\). Along the way, we improve on our previous work by constructing more refined \(\mathbb{E}_{2\rho}\)-orientations, as well as \(\mathbb{E}_{3\rho}\)-orientations in the periodic setting.
-                </p>
-            </details>
-        </li>
-
-        <li>
-            <details>
-                <summary>
-                    Multiplicative equivariant Thom spectra & structured Real orientations, joint with Qi Zhu, <em>submitted</em> (2025).
-                    <a href="chilli_v2.pdf">[PDF]</a> <a href="https://arxiv.org/abs/2512.15573">[arXiv]</a>
-                </summary>
-                <p>Summary: 
-                    Let \(\rho\) be the regular representation of \(C_2\).
-                    We show that \(\mathrm{BP}_{\mathbb{R}}\) admits an \(\mathbb{E}_\rho\)-ring structure, and that \(\mathrm{BP}^{(\!(G)\!)}\) admits a \(\mathrm{coind}^G_{C_2}\mathbb{E}_\rho\)-ring structure.
-                    We do this by lifting Quillen's idempotent to an \(\mathbb{E}_\rho\)-ring map.
-                    More generally, we show that any homotopy commutative ring map \(\mathrm{MU}\to E^e\) lifts to an \(\mathbb{E}_\rho\)-ring map \(\mathrm{MU}_{\mathbb{R}}\to E\) for any strongly even \(C_2\)-\(\mathbb{E}_\infty\)-ring \(E\).
-                    We do this by developing an obstruction theory for structured orientations of equivariant Thom spectra.
-                    The essential technology that goes into this is: generalizing the work of Antolín-Camarena–Barthel to the parameterized setting; and constructing a good theory of parameterized left module categories.
-                </p>
-            </details>
-        </li>
-
-        <li>
-            <details>
-                <summary>
-                Spectral properties of light and charm mesons from \(N_f=2+1\) anisotropic lattice QCD, joint with Jonas Glesaaen, Alexander Rothkopf, and Jonivar Skullerud. <em>Proceedings of Science</em> (2019).  
-                    <a href="quarks.pdf">[PDF]</a> <a href="https://arxiv.org/abs/1903.11006">[arXiv]</a>
-                </summary>
-                <p>Summary: We compute temporal correlators and spectral functions for light, open charm and charmonium mesons in the pseudoscalar and vector channel for a range of temperatures below and above the deconfinement transition. The study is carried out using anisotropic lattice QCD with \(2+1\) dynamical flavours, \(a_s = 0.123\) fm and \(a_s/a_\tau = 3.5\). The high-temperature results are benchmarked by comparing them to reconstructed correlators obtained by direct summation of the zero temperature correlator. We use two Bayesian methods to reconstruct the spectral functions: the maximum entropy method and the more recent BR method.</p>
-            </details>
-        </li>
-    </ul>
-</section>
-
-<section id="other">
-    <h2>Notes</h2>
-    <ul class="pub-list">
-        <li>
-            <details>
-                <summary>
-                    Truncated Brown–Peterson spectra as generalized Thom spectra, (2025).
-                    <a href="BPn_Thom.pdf">[PDF]</a> 
-                </summary>
-                <p>Summary: We show that the truncated Brown–Peterson spectra \(\mathrm{BP}\langle n\rangle\) can be constructed as generalized Thom spectra.</p>
-            </details>
-        </li>
-        <li>
-            <details>
-                <summary>
-                    A convenient approach to gradings in homotopy theories, (2025).
-                    <a href="gradings.pdf">[PDF]</a> 
-                </summary>
-                <p>Summary: We give a German approved way to talk about \(\mathrm{RO}(G)\)-graded homotopy groups.</p>
-            </details>
-        </li>
-        <li>
-            <details>
-                <summary>
-                    Localization theorems in equivariant cohomology (2025).
-                    <a href="equivariant_localization_theorems.pdf">[PDF]</a> 
-                </summary>
-                <p>
-                    Summary:
-                    This note reviews Atiyah–Bott localization theorems in equivariant cohomology. The goal is to highlight the following three things:
-                    <ul>
-                        <li>First, that proofs of Atiyah–Bott style localization theorems can be made completely formal.</li>
-                        <li>Second, give easy to check conditions for when an Atiyah–Bott style localization theorem holds in the integer graded setting, and show that they always hold in the \(\mathrm{RO}(G)\)-graded setting.</li>
-                        <li>Finally, clarify the situation for non-abelian groups.</li>
-                    </ul>
-                </p>
-                <p>
-                    This is essentially a cleaned up version of my masters thesis, supervised by Lennart Meier.
-                </p>
-            </details>
-        </li>
-        </ul>
-</section>
-
-
-
-
-
-    <section id="teaching">
-            <h2>Teaching & Supervision</h2>
-            <ul>
-                <li>Topological quantum field theories mini-course</li>
-                <li>Morse theory reading project</li>
-            </ul>
-    </section>
-
-
-    
-
-
-    <section id="misc">
-    <h2>Misc</h2>
-
-    <ul class="pub-list">
-    <li>
-      <details class="latex-snippet">
-        <summary>
-          code for nicer underlines in $\LaTeX$, e.g. compare
-          <span class="baduline">Sp</span> versus <span class="myuline">Sp</span>,
-          or <span class="baduline">Alg</span> versus <span class="myuline">Alg</span>
-        </summary>
-
-        <div class="latex-snippet__header">
-          <div class="latex-snippet__title">copy  \(\LaTeX\)</div>
-          <button class="latex-snippet__copy" type="button">Copy</button>
+          <p class="email">
+            email: <a href="mailto:r.quinn@uu.nl">r.quinn@uu.nl</a>
+          </p>
         </div>
 
-        <pre class="latex-snippet__pre"><code class="latex-snippet__code">%---(nicer underlines)-------------------------------------------------------------------START
+        <img src="me4.jpeg" alt="Profile photo" class="profile">
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>
+        My main focus is in equivariant and chromatic homotopy theory, with a particular focus in structured ring spectra.
+        I'm particularly interested in multiplicative structures on \(\mathrm{BP}^{(\!(G)\!)}\langle m\rangle\) and related computations.
+        I have a growing interest in applying equivariant multiplicative structures to the study of equivariant algebraic \(\mathrm{K}\)-theory,
+        as well as to Grothendieck-Witt and \(\mathrm{L}\)-theory.
+      </p>
+    </section>
+
+    <section id="publications">
+      <h2>Publications & Preprints</h2>
+
+      <ul class="pub-list">
+        <li>
+          <details>
+            <summary>
+              Structured Real Snaith Equivalences, joint with Qi Zhu, <em>preprint</em> (2026).
+              <a href="Snaith.pdf">[PDF]</a> <a href="https://arxiv.org/abs/2606.23309">[arXiv]</a>
+            </summary>
+            <p>
+              Summary:
+              We prove Real equivariant multiplicative versions of Snaith Theorems. As an application, we compute
+              \(\operatorname{THR}(\mathrm{MUP}_{\mathbb{R}})\) and \(\operatorname{THR}(\mathrm{KU}_{\mathbb{R}})\).
+              Along the way, we improve on our previous work by constructing more refined \(\mathbb{E}_{2\rho}\)-orientations,
+              as well as \(\mathbb{E}_{3\rho}\)-orientations in the periodic setting.
+            </p>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              Multiplicative equivariant Thom spectra & structured Real orientations, joint with Qi Zhu, <em>submitted</em> (2025).
+              <a href="chilli_v2.pdf">[PDF]</a> <a href="https://arxiv.org/abs/2512.15573">[arXiv]</a>
+            </summary>
+            <p>
+              Summary:
+              Let \(\rho\) be the regular representation of \(C_2\).
+              We show that \(\mathrm{BP}_{\mathbb{R}}\) admits an \(\mathbb{E}_\rho\)-ring structure, and that
+              \(\mathrm{BP}^{(\!(G)\!)}\) admits a \(\mathrm{coind}^G_{C_2}\mathbb{E}_\rho\)-ring structure.
+              We do this by lifting Quillen's idempotent to an \(\mathbb{E}_\rho\)-ring map.
+              More generally, we show that any homotopy commutative ring map \(\mathrm{MU}\to E^e\) lifts to an
+              \(\mathbb{E}_\rho\)-ring map \(\mathrm{MU}_{\mathbb{R}}\to E\) for any strongly even
+              \(C_2\)-\(\mathbb{E}_\infty\)-ring \(E\).
+              We do this by developing an obstruction theory for structured orientations of equivariant Thom spectra.
+              The essential technology that goes into this is: generalizing the work of Antolín-Camarena–Barthel to the
+              parameterized setting; and constructing a good theory of parameterized left module categories.
+            </p>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              Spectral properties of light and charm mesons from \(N_f=2+1\) anisotropic lattice QCD,
+              joint with Jonas Glesaaen, Alexander Rothkopf, and Jonivar Skullerud.
+              <em>Proceedings of Science</em> (2019).
+              <a href="quarks.pdf">[PDF]</a> <a href="https://arxiv.org/abs/1903.11006">[arXiv]</a>
+            </summary>
+            <p>
+              Summary:
+              We compute temporal correlators and spectral functions for light, open charm and charmonium mesons in the
+              pseudoscalar and vector channel for a range of temperatures below and above the deconfinement transition.
+              The study is carried out using anisotropic lattice QCD with \(2+1\) dynamical flavours,
+              \(a_s = 0.123\) fm and \(a_s/a_\tau = 3.5\). The high-temperature results are benchmarked by comparing
+              them to reconstructed correlators obtained by direct summation of the zero-temperature correlator.
+              We use two Bayesian methods to reconstruct the spectral functions: the maximum entropy method and the more recent BR method.
+            </p>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section id="other">
+      <h2>Notes</h2>
+
+      <ul class="pub-list">
+        <li>
+          <details>
+            <summary>
+              Truncated Brown–Peterson spectra as generalized Thom spectra, (2025).
+              <a href="BPn_Thom.pdf">[PDF]</a>
+            </summary>
+            <p>
+              Summary:
+              We show that the truncated Brown–Peterson spectra \(\mathrm{BP}\langle n\rangle\) can be constructed as generalized Thom spectra.
+            </p>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              A convenient approach to gradings in homotopy theories, (2025).
+              <a href="gradings.pdf">[PDF]</a>
+            </summary>
+            <p>
+              Summary:
+              We give a German-approved way to talk about \(\mathrm{RO}(G)\)-graded homotopy groups.
+            </p>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>
+              Localization theorems in equivariant cohomology (2025).
+              <a href="equivariant_localization_theorems.pdf">[PDF]</a>
+            </summary>
+
+            <p>
+              Summary:
+              This note reviews Atiyah–Bott localization theorems in equivariant cohomology.
+              The goal is to highlight the following three things:
+            </p>
+
+            <ul>
+              <li>First, that proofs of Atiyah–Bott style localization theorems can be made completely formal.</li>
+              <li>Second, give easy-to-check conditions for when an Atiyah–Bott style localization theorem holds in the integer-graded setting, and show that they always hold in the \(\mathrm{RO}(G)\)-graded setting.</li>
+              <li>Finally, clarify the situation for non-abelian groups.</li>
+            </ul>
+
+            <p>
+              This is essentially a cleaned-up version of my master’s thesis, supervised by Lennart Meier.
+            </p>
+          </details>
+        </li>
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching & Supervision</h2>
+      <ul>
+        <li>Topological quantum field theories mini-course</li>
+        <li>Morse theory reading project</li>
+      </ul>
+    </section>
+
+    <section id="misc">
+      <h2>Misc</h2>
+
+      <ul class="pub-list">
+        <li>
+          <details class="latex-snippet">
+            <summary>
+              code for nicer underlines in $\LaTeX$, e.g. compare
+              <span class="baduline">Sp</span> versus <span class="myuline">Sp</span>,
+              or <span class="baduline">Alg</span> versus <span class="myuline">Alg</span>
+            </summary>
+
+            <div class="latex-snippet__header">
+              <div class="latex-snippet__title">copy \(\LaTeX\)</div>
+              <button class="latex-snippet__copy" type="button">Copy</button>
+            </div>
+
+            <pre class="latex-snippet__pre"><code class="latex-snippet__code">%---(nicer underlines)-------------------------------------------------------------------START
 \makeatletter
 \usepackage[normalem]{ulem}
 \usepackage{contour}
@@ -308,7 +487,7 @@ window.MathJax = {
 \contourlength{0.8pt} % how big to make the gap in words like map
 
 \makeatletter
-% usage: there are two ways to use this 
+% usage: there are two ways to use this
 % \myuline{text} puts an underline under text
 % \myuline[7em]{text} puts an underline under text but shortens it by 7em; of course 7em can be changed. This is useful for stuff like \({\myuline[0.5pt]{\mathrm{Map}}}_G\), vs \({\myuline{\mathrm{Map}}}_G\)
 \DeclareRobustCommand{\myuline}[2][0pt]{%
@@ -329,109 +508,42 @@ window.MathJax = {
 \newcommand{\my@cont@}[2]{\contour{white}{\mbox{$\m@th#1#2$}}}
 \makeatother
 %------------------------------------------------------------------------------------------END</code></pre>
-      </details>
-    </li>
-  </ul>
-</section>
+          </details>
+        </li>
+      </ul>
+    </section>
+  </main>
 
-<style>
-  /* Optional styling for the dropdown content */
-  details.latex-snippet {
-    border: 1px solid rgba(162, 61, 61, 0.12);
-    border-radius: 12px;
-    padding: 8px 10px;
-    background: #fff;
-    max-width: 900px;
-  }
-  details.latex-snippet > summary {
-    cursor: pointer;
-    font-weight: 600;
-  }
-  .latex-snippet__header {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 10px;
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 10px;
-  }
-  .latex-snippet__copy {
-    border: 1px solid rgba(0,0,0,.08);
-    background: #fff;
-    padding: 6px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .latex-snippet__pre {
-    margin: 10px 0 0;
-    padding: 12px;
-    overflow: auto;
-    background: #fff;
-    color: rgb(33, 100, 60);
-    border-radius: 10px;
-  }
-  .latex-snippet__code {
-    white-space: pre;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    font-size: 13px;
-  }
-</style>
+  <footer>
+    © Ryan Quinn – Last updated: 2026
+  </footer>
 
-<script>
-  // code snippet copy
-  document.addEventListener("click", async (e) => {
-    const btn = e.target.closest(".latex-snippet__copy");
-    if (!btn) return;
+  <script>
+    document.addEventListener("click", async (e) => {
+      const btn = e.target.closest(".latex-snippet__copy");
+      if (!btn) return;
 
-    const container = btn.closest(".latex-snippet");
-    const codeEl = container.querySelector(".latex-snippet__code");
-    const text = codeEl.textContent;
+      const container = btn.closest(".latex-snippet");
+      const codeEl = container.querySelector(".latex-snippet__code");
+      const text = codeEl.textContent;
 
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.left = "-9999px";
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
 
-    const old = btn.textContent;
-    btn.textContent = "Copied!";
-    setTimeout(() => (btn.textContent = old), 1200);
-  });
-</script>
-
-
-<style>
-  /* no box around the whole <details> */
-  details.latex-snippet {
-    border: none;
-    background: transparent;
-    padding: 0;
-    max-width: none;
-  }
-  details.latex-snippet > summary {
-    font-weight: normal; 
-    cursor: pointer;
-  }
-  </style>
-
-
-
-
-
-    </main>
-
-
-    <footer>
-        © Ryan Quinn – Last updated: 2026  
-    </footer>
+      const old = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => (btn.textContent = old), 1200);
+    });
+  </script>
 </body>
 </html>
